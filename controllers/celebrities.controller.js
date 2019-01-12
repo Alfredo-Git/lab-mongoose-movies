@@ -1,28 +1,28 @@
-const User = require('../models/user.model');
+const Celebrity = require('../models/celebrity.model');
 
 module.exports.list = (req, res, next) => {
-  User.find()
-    .then((users) => res.render('users/list', { users }))
+  Celebrity.find()
+    .then((celebrities) => res.render('celebrities/list', { celebrities }))
     .catch(err => next(err))
 }
 
 module.exports.create = (req, res, next) => {
-  res.render('users/create');
+  res.render('celebrities/create');
 }
 
 module.exports.doCreate = (req, res, next) => {
-  const user = new User(req.body);
+  const celebrity = new Celebrity(req.body);
 
-  user.save()
-    .then((user) => { res.redirect('/users' )});
+  celebrity.save()
+    .then((celebrity) => { res.redirect('/celebrities' )});
 }
 
 module.exports.get = (req, res, next) => {
-  User.findById(req.params.id)
-    .then(user => res.render('users/detail', { user }));
+  Celebrity.findById(req.params.id)
+    .then(celebrity => res.render('celebrities/detail', { celebrity }));
 }
 
 module.exports.delete = (req, res, next) => {
-  User.findByIdAndDelete(req.params.id)
-    .then(user => res.redirect('/users'));
+  Celebrity.findByIdAndDelete(req.params.id)
+    .then(celebrity => res.redirect('/celebrities'));
 }
