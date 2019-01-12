@@ -19,6 +19,9 @@ app.set('view engine', 'hbs');
 hbs.registerPartials(__dirname + '/views/partials')
 app.use(express.static(__dirname + '/public'));
 
+app.get('/', (req, res, next) => {
+  res.render('index')
+})
 app.use('/celebrities', celebritiesRoutes);
 app.use('/movies', moviesRoutes);
 

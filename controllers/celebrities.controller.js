@@ -19,7 +19,8 @@ module.exports.doCreate = (req, res, next) => {
 
 module.exports.get = (req, res, next) => {
   Celebrity.findById(req.params.id)
-    .then(celebrity => res.render('celebrities/detail', { celebrity }));
+    .then(celebrity => res.render('celebrities/detail', { celebrity }))
+    .catch(next)
 }
 
 module.exports.delete = (req, res, next) => {
